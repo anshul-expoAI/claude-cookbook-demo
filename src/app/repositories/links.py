@@ -26,7 +26,7 @@ class SqlAlchemyLinksRepository:
         self._session.add(link)
         try:
             self._session.flush()
-        except IntegrityError:
+        except IntegrityError as exc:
             self._session.rollback()
-            raise CodeCollisionError(code)
+            raise CodeCollisionError(code) from exc
         return link
