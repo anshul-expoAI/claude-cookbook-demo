@@ -8,8 +8,13 @@ Claude Code sessions and teammates pick up the same Linear/GitHub bindings witho
 - **Team:** `Sapphire_Agentic_Team`
 - **Project:** `SDD-Cookbook-demo`
 
-All spec tickets for this workspace go in that team + project. Default ticket status when a spec is
-ready for Gate 1: `Spec Ready`.
+All spec tickets for this workspace go in that team + project.
+
+**Status mapping:** the planner global CLAUDE.md says spec-ready tickets get status `Spec Ready`,
+but the `Sapphire_Agentic_Team` Linear workspace does not have a "Spec Ready" workflow state.
+For this workspace, map `Spec Ready` → `Todo`. (Other states available: Backlog, In Progress,
+In Review, Blocked, Done, Canceled, Duplicate.) If a future session needs a phase-specific state
+not listed here, run `list_issue_statuses` first rather than guessing.
 
 ## GitHub
 
