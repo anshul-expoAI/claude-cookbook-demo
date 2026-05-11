@@ -1,0 +1,96 @@
+# .gitignore.template -- copy to your project root as .gitignore
+#
+# Covers: Python, TypeScript/Node, and Claude Code sandbox artifacts.
+# Trim freely -- this is a starter, not a contract.
+
+# ─── Claude Code sandbox artifacts ────────────────────────────────────────────
+# These live in workspace roots only when Claude Code is run there with HOME
+# pointing inside the workspace (e.g., the cookbook's demo-setup.sh sandbox).
+# They are per-session state; never commit them.
+.claude/
+.mcp.json
+
+# ─── Environment + secrets ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+.aws/
+.gcloud/
+
+# ─── Project-specific ─────────────────────────────────────────────────────────
+shortener.db
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.hypothesis/
+nosetests.xml
+coverage.xml
+*.cover
+.cache
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+
+# uv / Poetry / pipenv lock files: keep tracked OR ignored consistently
+# per-project. Defaults below assume uv with lock file tracked.
+# uv.lock          # <- tracked by default; uncomment to ignore
+# poetry.lock      # <- tracked by default; uncomment to ignore
+# Pipfile.lock     # <- tracked by default; uncomment to ignore
+
+# ─── TypeScript / Node ────────────────────────────────────────────────────────
+node_modules/
+*.tsbuildinfo
+.next/
+.nuxt/
+.cache/
+dist/
+build/
+out/
+.turbo/
+.parcel-cache/
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ─── Editor / OS ──────────────────────────────────────────────────────────────
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Logs + temp ──────────────────────────────────────────────────────────────
+*.log
+logs/
+tmp/
+temp/
