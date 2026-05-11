@@ -5,6 +5,9 @@ from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
+# Re-exported so routes type-hint from app.deps, not sqlalchemy directly.
+DBSession = Session
+
 from app.config import Settings
 
 _settings = Settings()

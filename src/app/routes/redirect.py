@@ -4,9 +4,8 @@ import re
 
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import RedirectResponse
-from sqlalchemy.orm import Session
 
-from app.deps import get_db
+from app.deps import DBSession, get_db
 from app.repositories.links import SqlAlchemyLinksRepository
 
 router = APIRouter()
@@ -15,7 +14,7 @@ _CODE_PATTERN = re.compile(r"^[A-Za-z0-9]{5,6}$")
 
 
 @router.get("/{code}")
-def redirect(code: str, db: Session = Depends(get_db)) -> RedirectResponse:
+def redirect(code: str, db: DBSession = Depends(get_db)) -> RedirectResponse:
     if not _CODE_PATTERN.match(code):
         raise HTTPException(status_code=404, detail="not found")
     repo = SqlAlchemyLinksRepository(db)

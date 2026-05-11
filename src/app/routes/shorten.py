@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
 
 from app.config import Settings
-from app.deps import get_db, require_auth
+from app.deps import DBSession, get_db, require_auth
 from app.repositories.links import SqlAlchemyLinksRepository
 from app.schemas.link import ShortenRequest, ShortenResponse
 from app.services.errors import CodeGenerationExhausted
@@ -18,7 +17,7 @@ _settings = Settings()
 def shorten(
     body: ShortenRequest,
     _auth: None = Depends(require_auth),
-    db: Session = Depends(get_db),
+    db: DBSession = Depends(get_db),
 ) -> ShortenResponse:
     repo = SqlAlchemyLinksRepository(db)
     try:
